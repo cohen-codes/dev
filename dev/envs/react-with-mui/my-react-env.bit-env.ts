@@ -28,8 +28,8 @@ import {
   EslintTask,
 } from '@teambit/defender.eslint-linter';
 import { ESLint as ESLintLib } from 'eslint';
-import { AppTypeList } from '@teambit/application';
-import { ViteReactType } from '@cohen-codes/dev.app-types.vite-react';
+// import { AppTypeList } from '@teambit/application';
+// import { ViteReactType } from '@cohen-codes/dev.app-types.vite-react';
 import {
   PrettierConfigWriter,
   PrettierFormatter,
@@ -228,9 +228,9 @@ export class ReactMui extends ReactEnv implements ReactEnvInterface {
     ]);
   }
 
-  apps(): EnvHandler<AppTypeList> {
-    return AppTypeList.from([ViteReactType.from()]);
-  }
+  // apps(): EnvHandler<AppTypeList> {
+  //   return AppTypeList.from([ViteReactType.from()]);
+  // }
 
   /**
    * configure and control the packaging process of components.

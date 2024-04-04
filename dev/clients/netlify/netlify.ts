@@ -180,23 +180,6 @@ export class NetlifyAPI {
       };
     });
 
-    const functions = filesIndex.filter((file) =>
-      file.path.startsWith('functions/')
-    );
-    const functionsIndex = functions.map((functionFile) => {
-      const hash = crypto.createHash('sha1');
-      const fileContent = readFileSync(join(dir, functionFile.path));
-      hash.update(fileContent);
-      const hashDigest = hash.digest('hex');
-      const normalizedPath = normalize(
-        functionFile.path.replace(dir, '')
-      ).replace(/\\/g, '/');
-      return {
-        path: normalizedPath,
-        hash: hashDigest,
-      };
-    });
-
     const fileObject = {};
     for (const file of filesIndex) {
       fileObject[file.path] = file.hash;
@@ -210,7 +193,6 @@ export class NetlifyAPI {
     const uploadIndexRes = await this.instance
       .post(deployUrl, {
         files: fileObject,
-        functions: functionsIndex,
       })
       .catch((e) => {
         throw new Error(`Failed to upload file index: ${e.message}`);
