@@ -1,0 +1,107 @@
+/**
+ * this is the main configuration file of your bit workspace.
+ * for full documentation, please see: https://bit.dev/reference/workspace/workspace-json
+ **/{
+  "$schema": "https://static.bit.dev/teambit/schemas/schema.json",
+  /**
+   * main configuration of the Bit workspace.
+   **/
+  "teambit.workspace/workspace": {
+    /**
+     * the name of the component workspace. used for development purposes.
+     **/
+    "name": "dev",
+    /**
+     * set the icon to be shown on the Bit server.
+     **/
+    "icon": "https://static.bit.dev/brands/bit-logo-min.png",
+    /**
+     * default directory to place a component during `bit import` and `bit create`.
+     * the following placeholders are available:
+     * name - component name includes namespace, e.g. 'ui/button'.
+     * scopeId - full scope-id includes the owner, e.g. 'teambit.compilation'.
+     * scope - scope name only, e.g. 'compilation'.
+     * owner - owner name in bit.dev, e.g. 'teambit'.
+     **/
+    "defaultDirectory": "{scope}/{name}",
+    /**
+     * default scope for all components in workspace.
+     **/
+    "defaultScope": "cohen-codes.dev",
+    "resolveAspectsFromNodeModules": true,
+    "resolveEnvsFromRoots": true
+  },
+  /**
+  * Enable generator templates by uncommenting the desired environments below.
+  * These generators scaffold components for Node, React, Vue, and Angular.
+  * After uncommenting, run `bit install` to make them available in your workspace.
+  * Explore more dev environments at: https://bit.dev/docs/getting-started/composing/dev-environments
+  **/
+  "teambit.generator/generator": {
+    "envs": [
+      //  "bitdev.node/node-env",
+      //  "bitdev.react/react-env",
+      //  "bitdev.vue/vue-env",
+      //  "bitdev.angular/angular-env"
+    ]
+  },
+  /**
+   * main configuration for component dependency resolution.
+   **/
+  "teambit.dependencies/dependency-resolver": {
+    /**
+     * choose the package manager for Bit to use. you can choose between 'yarn', 'pnpm'
+     */
+    "packageManager": "teambit.dependencies/pnpm",
+    "policy": {
+      "dependencies": {
+        "@bitdev/react.eslint.eslint-config-bit-react": "^0.0.5",
+        "@bitdev/react.generators.react-starters": "^0.0.9",
+        "@bitdev/react.generators.react-templates": "^1.1.21",
+        "@bitdev/react.react-env": "^1.1.49",
+        "@cohen-codes/design.theme.dark-theme": "^0.0.2",
+        "@cohen-codes/design.theme.light-theme": "^0.0.2",
+        "@cohen-codes/design.theme.theme-provider": "^0.0.2",
+        "@cohen-codes/design.theme.theme-toggle": "^0.0.2",
+        "@mdx-js/rollup": "^3.0.1",
+        "@nitsan770/portfolio.tasks.prerender": "^0.0.1",
+        "@nitsan770/portfolio.theme.dark-portfolio-theme": "^0.0.3",
+        "@nitsan770/portfolio.theme.light-portfolio-theme": "^0.0.4",
+        "@nitsan770/portfolio.theme.theme-provider": "^0.0.3",
+        "@nitsan770/portfolio.theme.theme-toggle": "^0.0.3",
+        "@teambit/community.tasks.generate-app-routes": "0.0.0-1f9d79bb15389018deed29756c57278db90e944d",
+        "@teambit/defender.eslint-linter": "^1.0.19",
+        "@teambit/defender.prettier-formatter": "^1.0.11",
+        "@teambit/dependencies.modules.packages-excluder": "^1.0.8",
+        "@teambit/docs.docs-template": "^1.0.4",
+        "@teambit/html.modules.inject-html-element": "^0.0.4",
+        "@teambit/mdx.ui.mdx-scope-context": "^0.0.496",
+        "@teambit/preview.react-preview": "^1.0.25",
+        "@teambit/react.apps.react-app-types": "^1.0.21",
+        "@teambit/react.eslint-config-bit-react": "^0.0.741",
+        "@teambit/react.jest.react-jest": "^1.0.19",
+        "@teambit/react.mounter": "^1.0.3",
+        "@teambit/react.react-env": "^0.0.41",
+        "@teambit/toolbox.performance.v8-cache": "^0.0.33",
+        "@teambit/typescript.typescript-compiler": "^2.0.23",
+        "@teambit/vite.vitest-tester": "^0.1.0",
+        "@testing-library/jest-dom": "^6.4.2",
+        "@types/jest": "29.5.4",
+        "@types/node": "16.18.44",
+        "@vitejs/plugin-react": "^4.2.1",
+        "eslint": "^8.57.0",
+        "find-root": "^1.1.0",
+        "glob": "^10.2.6",
+        "playwright": "^1.36.2",
+        "typescript": "^5.4.2",
+        "vite": "^5.2.8"
+      },
+      "peerDependencies": {}
+    },
+    "linkCoreAspects": true,
+    "rootComponents": true
+  },
+  "teambit.workspace/workspace-config-files": {
+    "enableWorkspaceConfigWrite": true
+  }
+}
