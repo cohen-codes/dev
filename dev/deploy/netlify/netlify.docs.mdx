@@ -1,0 +1,112 @@
+---
+description: Deploys frontend app components to Netlify.
+labels: ['netlify', 'app deployer', 'frontend apps', 'react', 'hosting']
+---
+
+This Netlify deployer deploys frontend app components to [Netlify hosting](https://www.netlify.com/).
+
+## Basic usage
+
+Fork this demo app which uses Netlify for deployment, and follow along the instructions:
+
+```bash
+bit fork teambit.cloud-providers/deployments/netlify my-app
+```
+
+Add your new app to the `workspace.jsonc` file:
+
+```bash
+bit use my-app
+```
+
+Head over to your app's [`netlify.ts`](https://bit.cloud/teambit/cloud-providers/deployments/netlify/~code/netlify.ts) file to configure your Netlify deployer:
+
+```ts
+const netlifyConfig: NetlifyOptions = {
+  team: 'my-teams-slug',
+  accessToken: process.env.NETLIFY_AUTH_TOKEN as string,
+  productionSiteName: 'my-wonderful-site',
+};
+```
+
+Tag your app component to deploy it:
+
+```bash
+bit tag my-app --message "deploying my app"
+```
+
+## Compatibility with Netlify Options
+
+This deployer allows you to use Netlify configuration files such as `netlify.toml` and `__redirects` files. You can read more about Netlify configuration files [here](https://docs.netlify.com/configure-builds/file-based-configuration/).
+
+If any of this configuration files are present in your app component, they will be deployed to Netlify.
+
+## Default redirects for SPA apps
+
+If `useDefaultRedirectsForSPA` is set to `true`, the deployer will add a `__redirects` file to your app component, which will redirect all requests to the `index.html` file.
+
+```ts
+const netlifyConfig: NetlifyOptions = {
+  team: 'my-teams-slug',
+  accessToken: process.env.NETLIFY_AUTH_TOKEN as string,
+  productionSiteName: 'my-wonderful-site',
+  useDefaultRedirectsForSPA: true,
+};
+```
+
+:::caution
+This option will override any `__redirects` file you have in your app component.
+:::
+
+## Staging and production environments
+
+`stagingSiteName` is another optional prop, which specifies the name of the staging site. It is useful whenever you collaborate with other developers on the same application component.
+We usually [snap](https://bit.dev/docs/components/snaps) components instead of tagging them when collaborating. Netlify deployer detects when the app component is snapped and deploys it to the staging site.
+
+If the `stagingSiteName` prop is not provided, the deployer will deploy the app to a sitename created using the hash of the component ID or the lane ID.
+
+```ts
+const netlifyConfig: NetlifyOptions = {
+  team: 'my-teams-slug',
+  accessToken: process.env.NETLIFY_AUTH_TOKEN as string,
+  productionSiteName: 'my-wonderful-site',
+  stagingSiteName: 'my-wonderful-site-staging',
+};
+```
+
+Visit the site you have set and view your newly deployed app. For example: [https://my-awesome-site-0321456.netlify.app/](https://my-awesome-site-0321456.netlify.app/).
+
+## Skipping deployment
+
+You can skip deployment by setting the `skipDeployment` prop to `true`:
+
+```ts
+const netlifyConfig: NetlifyOptions = {
+  team: 'my-teams-slug',
+  accessToken: process.env.NETLIFY_AUTH_TOKEN as string,
+  productionSiteName: 'my-wonderful-site',
+  skipDeployment: true,
+};
+```
+
+In some cases you only want to skip the deployments when working on a lane, in this case you can use the `skipLaneDeployments` prop:
+
+```ts
+const netlifyConfig: NetlifyOptions = {
+  team: 'my-teams-slug',
+  accessToken: process.env.NETLIFY_AUTH_TOKEN as string,
+  productionSiteName: 'my-wonderful-site',
+  skipLaneDeployments: true,
+};
+```
+
+## Setting the netlify deployer on an existing app
+
+1. Inside your app directory, initiate a Netlify deployer with your own Netlify config. See example [here](https://bit.cloud/teambit/cloud-providers/deployments/netlify/~code/netlify.ts).
+
+2. In your app's [plugin file](#), set your app's deploy property with the `deploy` method of your Netlify instance. See example [here](https://bit.cloud/teambit/cloud-providers/deployments/netlify/~code/react-app.react-app.ts).
+
+## Compatibility
+
+This Netlify deployer deploys static frontend applications. It requires the [app's deployment context](/to-do) ([`DeployContext`](https://bit.dev/teambit/harmony/application/~code/app-deploy-context.ts)) to be extended to include the `publicDir: string` property (which points to the build output directory).
+Apps that do not provide that, are not compatible.

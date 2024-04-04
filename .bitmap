@@ -9,6 +9,95 @@
  */
 
 {
+    "app-types/vite-react": {
+        "name": "app-types/vite-react",
+        "scope": "",
+        "version": "",
+        "defaultScope": "cohen-codes.dev",
+        "mainFile": "index.ts",
+        "rootDir": "dev/app-types/vite-react",
+        "config": {
+            "teambit.harmony/node": {},
+            "teambit.envs/envs": {
+                "env": "teambit.harmony/node"
+            },
+            "teambit.component/dev-files": {},
+            "teambit.preview/preview": {},
+            "teambit.compositions/compositions": {},
+            "teambit.docs/docs": {},
+            "teambit.pipelines/builder": {},
+            "teambit.harmony/application": {},
+            "teambit.compilation/compiler": {},
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {}
+            },
+            "teambit.semantics/schema": {},
+            "teambit.component/forking": {
+                "forkedFrom": {
+                    "scope": "bitdev.react",
+                    "name": "app-types/vite-react",
+                    "version": "1.1.26"
+                }
+            }
+        }
+    },
+    "clients/netlify": {
+        "name": "clients/netlify",
+        "scope": "",
+        "version": "",
+        "defaultScope": "cohen-codes.dev",
+        "mainFile": "index.ts",
+        "rootDir": "dev/clients/netlify",
+        "config": {
+            "teambit.harmony/node": {},
+            "teambit.envs/envs": {
+                "env": "teambit.harmony/node"
+            },
+            "teambit.dependencies/dependency-resolver": {},
+            "teambit.compositions/compositions": {},
+            "teambit.docs/docs": {},
+            "teambit.preview/preview": {},
+            "teambit.component/dev-files": {},
+            "teambit.pipelines/builder": {},
+            "teambit.harmony/application": {},
+            "teambit.component/forking": {
+                "forkedFrom": {
+                    "scope": "teambit.cloud-providers",
+                    "name": "clients/netlify",
+                    "version": "0.0.11"
+                }
+            }
+        }
+    },
+    "deploy/netlify": {
+        "name": "deploy/netlify",
+        "scope": "",
+        "version": "",
+        "defaultScope": "cohen-codes.dev",
+        "mainFile": "index.ts",
+        "rootDir": "dev/deploy/netlify",
+        "config": {
+            "teambit.node/node@1.0.25": {},
+            "teambit.envs/envs": {
+                "env": "teambit.node/node"
+            },
+            "teambit.dependencies/dependency-resolver": {},
+            "teambit.component/dev-files": {},
+            "teambit.compositions/compositions": {},
+            "teambit.docs/docs": {},
+            "teambit.pipelines/builder": {},
+            "teambit.compilation/compiler": {},
+            "teambit.harmony/application": {},
+            "teambit.preview/preview": {},
+            "teambit.component/forking": {
+                "forkedFrom": {
+                    "scope": "teambit.cloud-providers",
+                    "name": "deployers/netlify",
+                    "version": "0.1.26"
+                }
+            }
+        }
+    },
     "envs/react-18": {
         "name": "envs/react-18",
         "scope": "cohen-codes.dev",
@@ -26,7 +115,7 @@
     "envs/react-with-mui": {
         "name": "envs/react-with-mui",
         "scope": "cohen-codes.dev",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "mainFile": "index.ts",
         "rootDir": "dev/envs/react-with-mui"
     },

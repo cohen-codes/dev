@@ -1,5 +1,3 @@
-/// <reference types="vite/client" />
-
 export type ImportMetaEnv = Record<string, string>;
 
 interface ImportMeta {

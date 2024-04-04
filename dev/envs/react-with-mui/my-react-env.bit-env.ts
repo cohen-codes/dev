@@ -12,13 +12,11 @@ import {
   ThemeTemplate,
 } from '@bitdev/react.generators.react-templates';
 import { ReactWorkspaceStarter } from '@bitdev/react.generators.react-starters';
-// import { ReactAppType } from '@teambit/react.apps.react-app-types';
 import { TypeScriptExtractor } from '@teambit/typescript';
 import { ReactPreview } from '@teambit/preview.react-preview';
 import { EnvHandler } from '@teambit/envs';
 import {
   TypescriptCompiler,
-  // resolveTypes,
   TypescriptTask,
   TypescriptConfigWriter,
   resolveTypes,
@@ -30,7 +28,8 @@ import {
   EslintTask,
 } from '@teambit/defender.eslint-linter';
 import { ESLint as ESLintLib } from 'eslint';
-// import { AppTypeList } from '@teambit/application';
+import { AppTypeList } from '@teambit/application';
+import { ViteReactType } from '@cohen-codes/dev.app-types.vite-react';
 import {
   PrettierConfigWriter,
   PrettierFormatter,
@@ -229,13 +228,9 @@ export class ReactMui extends ReactEnv implements ReactEnvInterface {
     ]);
   }
 
-  // apps(): EnvHandler<AppTypeList> {
-  //   return AppTypeList.from([
-  //     ReactSsrType.from(),
-  //     ViteReactType.from(),
-  //     ReactAppType.from(),
-  //   ]);
-  // }
+  apps(): EnvHandler<AppTypeList> {
+    return AppTypeList.from([ViteReactType.from()]);
+  }
 
   /**
    * configure and control the packaging process of components.
