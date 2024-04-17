@@ -1,4 +1,4 @@
-import { MyReactEnv } from './my-react-env.bit-env';
+import { React18 } from './my-react-env.bit-env';
 
-export { MyReactEnv };
-export default MyReactEnv;
+export { React18 };
+export default React18;

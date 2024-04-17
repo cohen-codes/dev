@@ -26,7 +26,7 @@
     "envs/react-18": {
         "name": "envs/react-18",
         "scope": "cohen-codes.dev",
-        "version": "0.0.1",
+        "version": "0.0.3",
         "mainFile": "index.ts",
         "rootDir": "dev/envs/react-18"
     },
@@ -40,7 +40,7 @@
     "envs/react-with-mui": {
         "name": "envs/react-with-mui",
         "scope": "cohen-codes.dev",
-        "version": "0.0.3",
+        "version": "0.0.5",
         "mainFile": "index.ts",
         "rootDir": "dev/envs/react-with-mui"
     },

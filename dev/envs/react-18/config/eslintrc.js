@@ -1,3 +1,13 @@
 module.exports = {
-  extends: [require.resolve('@teambit/react.react-env/config/eslintrc')],
+  extends: [require.resolve('@bitdev/react.eslint.eslint-config-bit-react')],
+  settings: {
+    'mdx/code-blocks': true,
+    jest: {
+      version: 29,
+    },
+    react: {
+      version: '18.0',
+    },
+  },
+  rules: {},
 };
